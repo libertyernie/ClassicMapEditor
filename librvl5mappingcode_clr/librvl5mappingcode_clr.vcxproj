@@ -134,6 +134,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="ButtonMappingCode.cpp" />
+    <ClCompile Include="ButtonMappingHeader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ButtonMappingCode.h" />
+    <ClInclude Include="ButtonMappingHeader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
