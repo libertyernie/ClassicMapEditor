@@ -6,7 +6,7 @@
 #pragma pack(push)
 
 #pragma pack(2)
-namespace librvl5mappingcode {
+namespace libclassicmap {
 	struct ButtonMappingHeader
 	{
 		uint16_t _00;

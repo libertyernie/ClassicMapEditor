@@ -3,7 +3,7 @@
 #include <vector>
 using std::vector;
 
-namespace librvl5mappingcode {
+namespace libclassicmap {
 	vector<uint16_t> ButtonMappingHeader::getAdditionalData() {
 		vector<uint16_t> vec;
 

@@ -23,7 +23,7 @@
     <ProjectGuid>{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}</ProjectGuid>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>librvl5mappingcodeclr</RootNamespace>
+    <RootNamespace>libclassicmap_clr</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

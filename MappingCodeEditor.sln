@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "librvl5mappingcode_clr", "librvl5mappingcode_clr\librvl5mappingcode_clr.vcxproj", "{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libclassicmap_clr", "libclassicmap_clr\libclassicmap_clr.vcxproj", "{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
