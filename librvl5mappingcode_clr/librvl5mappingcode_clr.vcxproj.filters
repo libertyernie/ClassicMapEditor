@@ -15,35 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="librvl5mappingcode_clr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="librvl5mappingcode_clr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="app.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="app.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>
