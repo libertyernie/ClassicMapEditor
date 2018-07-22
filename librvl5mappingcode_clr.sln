@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "librvl5mappingcode_clr", "librvl5mappingcode_clr\librvl5mappingcode_clr.vcxproj", "{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Debug|x64.ActiveCfg = Debug|x64
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Debug|x64.Build.0 = Debug|x64
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Debug|x86.ActiveCfg = Debug|Win32
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Debug|x86.Build.0 = Debug|Win32
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Release|x64.ActiveCfg = Release|x64
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Release|x64.Build.0 = Release|x64
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Release|x86.ActiveCfg = Release|Win32
+		{A7551EBA-E5DB-4D8E-8448-34EA2D7FADCD}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F056B91C-B185-4629-A418-611CB106AA76}
+	EndGlobalSection
+EndGlobal
