@@ -35,5 +35,14 @@
     <ClInclude Include="wii_remote_button_mapping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ButtonMappingCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonMappingHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WiiRemoteButtonMapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
