@@ -2,6 +2,8 @@
 
 #include "ButtonMappingCode.h"
 
+#include <set>
+
 using namespace System;
 using namespace System::Collections::Generic;
 
@@ -19,20 +21,23 @@ namespace ClassicMap {
 	}
 
 	IEnumerable<ButtonMappingHeader^>^ ButtonMappingCode::GetButtonMappings() {
+		std::set<void*> used;
 		auto list = gcnew List<ButtonMappingHeader^>();
-		for each (button_mapping_header* ptr in this->_code->getButtonMappings())
-		{
-			list->Add(gcnew ButtonMappingHeader(ptr));
-		}
-		return list;
-	}
 
-	IEnumerable<WiiRemoteButtonMapping^>^ ButtonMappingCode::GetWiiRemoteButtonMappings() {
-		auto list = gcnew List<WiiRemoteButtonMapping^>();
 		for each (wii_remote_button_mapping* ptr in this->_code->getWiiRemoteButtonMappings())
 		{
+			if (used.find(ptr) != used.end()) continue;
 			list->Add(gcnew WiiRemoteButtonMapping(ptr));
+			used.insert(ptr);
 		}
+
+		for each (button_mapping_header* ptr in this->_code->getAllButtonMappings())
+		{
+			if (used.find(ptr) != used.end()) continue;
+			list->Add(gcnew ButtonMappingHeader(ptr));
+			used.insert(ptr);
+		}
+
 		return list;
 	}
 

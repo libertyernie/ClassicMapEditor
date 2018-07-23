@@ -1,29 +1,22 @@
 #pragma once
 
+#include "button_mapping_header.h"
 #include "wii_remote_button_mapping.h"
 #include "Buttons.h"
+#include "ButtonMappingCode.h"
 
 #include <vector>
 
 using namespace System;
 
 namespace ClassicMap {
-	public ref class WiiRemoteButtonMapping {
+	public ref class WiiRemoteButtonMapping : public ButtonMappingHeader {
 	private:
 		libclassicmap::wii_remote_button_mapping* _ptr;
 
 	public:
-		WiiRemoteButtonMapping(libclassicmap::wii_remote_button_mapping* ptr) {
+		WiiRemoteButtonMapping(libclassicmap::wii_remote_button_mapping* ptr) : ButtonMappingHeader((libclassicmap::button_mapping_header*)ptr) {
 			this->_ptr = ptr;
-		}
-
-		property ClassicControllerButton ClassicController {
-			ClassicControllerButton get() {
-				return (ClassicControllerButton)this->_ptr->ccButton;
-			}
-			void set(ClassicControllerButton value) {
-				this->_ptr->ccButton = (uint16_t)value;
-			}
 		}
 
 		property WiiRemoteButton WiiRemote {

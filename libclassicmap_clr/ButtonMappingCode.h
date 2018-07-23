@@ -21,7 +21,6 @@ namespace ClassicMap {
 		ButtonMappingCode(String^ name, String^ data);
 		ButtonMappingCode(String^ name, array<uint8_t>^ data);
 		IEnumerable<ButtonMappingHeader^>^ GetButtonMappings();
-		IEnumerable<WiiRemoteButtonMapping^>^ GetWiiRemoteButtonMappings();
 		property String^ Name {
 			String^ get();
 		}
