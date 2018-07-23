@@ -134,7 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="CLR.cpp" />
+    <ClCompile Include="ButtonMappingCode.cpp" />
     <ClCompile Include="button_mapping_code.cpp" />
     <ClCompile Include="button_mapping_header.cpp" />
   </ItemGroup>

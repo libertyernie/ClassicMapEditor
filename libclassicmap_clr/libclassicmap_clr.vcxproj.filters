@@ -24,7 +24,7 @@
     <ClCompile Include="button_mapping_header.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLR.cpp">
+    <ClCompile Include="ButtonMappingCode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
