@@ -1,7 +1,10 @@
-#pragma once
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ClassicMap {
-	public enum class WiiRemoteButton {
+namespace ClassicMapLib
+{
+	public enum WiiRemoteButton {
 		SidewaysDown = 0x0001,
 		SidewaysUp = 0x0002,
 		SidewaysRight = 0x0004,
@@ -15,9 +18,9 @@ namespace ClassicMap {
 		Z = 0x2000,
 		C = 0x4000,
 		Home = 0x8000,
-	};
+	}
 
-	public enum class ClassicControllerButton {
+	public enum ClassicControllerButton {
 		Up = 0x0001,
 		Left = 0x0002,
 		ZR = 0x0004,
@@ -33,5 +36,5 @@ namespace ClassicMap {
 		L = 0x2000,
 		Down = 0x4000,
 		Right = 0x8000,
-	};
+	}
 }
