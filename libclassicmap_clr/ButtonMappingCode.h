@@ -49,11 +49,13 @@ namespace ClassicMap {
 		}
 
 		property String^ Name {
-			String^ get();
+			String^ get() {
+				return msclr::interop::marshal_as<String^>(this->_code->getName());
+			}
 		}
 
 		String^ ToString() override {
-			return msclr::interop::marshal_as<String^>(this->_code->getName());
+			return msclr::interop::marshal_as<String^>(this->_code->toString());
 		}
 
 		~ButtonMappingCode() {

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "wii_remote_button_mapping.h"
+#include "Buttons.h"
+
 #include <vector>
 
 using namespace System;
@@ -15,21 +17,21 @@ namespace ClassicMap {
 			this->_ptr = ptr;
 		}
 
-		property uint16_t ClassicControllerButton {
-			uint16_t get() {
-				return this->_ptr->ccButton;
+		property ClassicControllerButton ClassicController {
+			ClassicControllerButton get() {
+				return (ClassicControllerButton)this->_ptr->ccButton;
 			}
-			void set(uint16_t value) {
-				this->_ptr->ccButton = value;
+			void set(ClassicControllerButton value) {
+				this->_ptr->ccButton = (uint16_t)value;
 			}
 		}
 
-		property uint16_t WiiRemoteButton {
-			uint16_t get() {
-				return this->_ptr->wiiButton;
+		property WiiRemoteButton WiiRemote {
+			WiiRemoteButton get() {
+				return (WiiRemoteButton)this->_ptr->wiiButton;
 			}
-			void set(uint16_t value) {
-				this->_ptr->wiiButton = value;
+			void set(WiiRemoteButton value) {
+				this->_ptr->wiiButton = (uint16_t)value;
 			}
 		}
 	};

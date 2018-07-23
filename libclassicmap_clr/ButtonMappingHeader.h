@@ -1,9 +1,12 @@
 #pragma once
 
 #include "button_mapping_header.h"
+#include "Buttons.h"
+
 #include <vector>
 
 using namespace System;
+using namespace System::Text;
 
 namespace ClassicMap {
 	public ref class ButtonMappingHeader {
@@ -15,12 +18,12 @@ namespace ClassicMap {
 			this->_ptr = ptr;
 		}
 
-		property uint16_t ClassicControllerButton {
-			uint16_t get() {
-				return this->_ptr->ccButton;
+		property ClassicControllerButton ClassicController {
+			ClassicControllerButton get() {
+				return (ClassicControllerButton)this->_ptr->ccButton;
 			}
-			void set(uint16_t value) {
-				this->_ptr->ccButton = value;
+			void set(ClassicControllerButton value) {
+				this->_ptr->ccButton = (uint16_t)value;
 			}
 		}
 
@@ -31,6 +34,15 @@ namespace ClassicMap {
 				to[i] = from[i];
 			}
 			return to;
+		}
+
+		String^ GetAdditionalDataAsHexString() {
+			std::vector<uint16_t> from = _ptr->getAdditionalData();
+			StringBuilder^ sb = gcnew StringBuilder();
+			for each (uint16_t value in from) {
+				sb->Append(((int32_t)value).ToString("X4"));
+			}
+			return sb->ToString();
 		}
 	};
 }

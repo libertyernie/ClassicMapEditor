@@ -134,12 +134,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="CLR.cpp" />
     <ClCompile Include="button_mapping_code.cpp" />
     <ClCompile Include="button_mapping_header.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonMappingCode.h" />
     <ClInclude Include="ButtonMappingHeader.h" />
+    <ClInclude Include="Buttons.h" />
     <ClInclude Include="button_mapping_code.h" />
     <ClInclude Include="button_mapping_header.h" />
     <ClInclude Include="WiiRemoteButtonMapping.h" />
