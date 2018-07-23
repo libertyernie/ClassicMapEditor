@@ -7,7 +7,7 @@
 
 #pragma pack(2)
 namespace libclassicmap {
-	struct WiiRemoteButtonMapping
+	struct button_mapping_header
 	{
 		uint16_t _00;
 		uint16_t ccButton;
@@ -15,8 +15,8 @@ namespace libclassicmap {
 		uint16_t _06;
 		uint16_t _08;
 		uint16_t _lengthParam;
-		uint16_t _0c;
-		uint16_t wiiButton;
+
+		std::vector<uint16_t> getAdditionalData();
 	};
 }
 

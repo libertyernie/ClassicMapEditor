@@ -1,10 +1,10 @@
-#include "ButtonMappingHeader.h"
+#include "button_mapping_header.h"
 
 #include <vector>
 using std::vector;
 
 namespace libclassicmap {
-	vector<uint16_t> ButtonMappingHeader::getAdditionalData() {
+	vector<uint16_t> button_mapping_header::getAdditionalData() {
 		vector<uint16_t> vec;
 
 		uint16_t* ptr_from_header_end = (uint16_t*)(this + 1);

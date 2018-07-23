@@ -134,13 +134,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="ButtonMappingCode.cpp" />
-    <ClCompile Include="ButtonMappingHeader.cpp" />
+    <ClCompile Include="button_mapping_code.cpp" />
+    <ClCompile Include="button_mapping_header.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ButtonMappingCode.h" />
-    <ClInclude Include="ButtonMappingHeader.h" />
-    <ClInclude Include="WiiRemoteButtonMapping.h" />
+    <ClInclude Include="button_mapping_code.h" />
+    <ClInclude Include="button_mapping_header.h" />
+    <ClInclude Include="wii_remote_button_mapping.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
