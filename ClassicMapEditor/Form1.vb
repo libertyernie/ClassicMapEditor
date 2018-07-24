@@ -10,9 +10,10 @@ Public Class Form1
         _code = code
 
         FlowLayoutPanel1.Controls.Clear()
-        UpdateTextBox()
 
         If _code IsNot Nothing Then
+            UpdateTextBox()
+
             For Each mapping In _code.GetButtonMappings
                 If TypeOf mapping Is WiiRemoteButtonMapping Then
                     Dim control = New WiiRemoteMappingControl(mapping)
@@ -29,13 +30,7 @@ Public Class Form1
     End Sub
 
     Private Sub UpdateTextBox()
-        If _code Is Nothing Then
-            TextBox1.Text = ""
-            TextBox1.ReadOnly = False
-        Else
-            TextBox1.Text = _code.ToString
-            TextBox1.ReadOnly = _code.IsGCT
-        End If
+        TextBox1.Text = _code.ToString
     End Sub
 
     Private Sub ImportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportToolStripMenuItem.Click
@@ -76,26 +71,20 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         If _code Is Nothing OrElse _code.ToString <> TextBox1.Text Then
-            If _code.IsGCT Then
-                Return
-            End If
+            Dim lines = TextBox1.Text.TrimEnd.Split(New String() {vbCrLf}, StringSplitOptions.None)
 
-            If TextBox1.Text.Contains(vbCrLf) Then
-                Dim lines = TextBox1.Text.TrimEnd.Split(New String() {vbCrLf}, StringSplitOptions.None)
+            Dim name = lines.First
+            Dim code As New StringBuilder
+            For Each line In lines.Skip(1)
+                If Not GCTLine.IsMatch(line) Then
+                    SetCode(Nothing)
+                    Return
+                End If
+                code.AppendLine(line)
+            Next
 
-                Dim name = lines.First
-                Dim code As New StringBuilder
-                For Each line In lines.Skip(1)
-                    If Not GCTLine.IsMatch(line) Then
-                        SetCode(Nothing)
-                        Return
-                    End If
-                    code.AppendLine(line)
-                Next
-
-                Dim newCode = New ButtonMappingCode(name, code.ToString)
-                SetCode(newCode)
-            End If
+            Dim newCode = New ButtonMappingCode(name, code.ToString)
+            SetCode(newCode)
         End If
     End Sub
 End Class

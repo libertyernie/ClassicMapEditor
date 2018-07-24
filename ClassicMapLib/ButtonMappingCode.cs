@@ -8,30 +8,31 @@ namespace ClassicMapLib {
 	public unsafe class ButtonMappingCode : IDisposable {
 		public readonly string Name;
 
+		private IntPtr _allocatedMemory;
 		private ushort* _dataStart;
 		private ushort* _dataEnd;
-
-		public unsafe bool IsGCT {
-			get {
-				return _dataEnd - _dataStart >= 8
-					&& _dataStart[0] == 0x00d0
-					&& _dataStart[1] == 0xc0de
-					&& _dataStart[2] == 0x00d0
-					&& _dataStart[3] == 0xc0de;
-			}
-		}
 
 		public ButtonMappingCode(string name, string data) : this(name, StringToBytes.ParseHexString(data).ToArray()) { }
 
 		public ButtonMappingCode(string name, byte[] data) {
 			this.Name = name;
 
-			IntPtr ptr = Marshal.AllocHGlobal(data.Length);
-			this._dataStart = (ushort*)ptr;
-			this._dataEnd = (ushort*)(ptr + data.Length);
+			_allocatedMemory = Marshal.AllocHGlobal(data.Length);
+			this._dataStart = (ushort*)_allocatedMemory;
+			this._dataEnd = (ushort*)(_allocatedMemory + data.Length);
 
 			for (int i = 0; i < data.Length; i += 2) {
 				this._dataStart[i / 2] = (ushort)(data[i] << 8 | data[i + 1]);
+			}
+
+			bool gct = _dataEnd - _dataStart >= 16
+				&& _dataStart[0] == 0x00d0
+				&& _dataStart[1] == 0xc0de
+				&& _dataStart[2] == 0x00d0
+				&& _dataStart[3] == 0xc0de;
+			if (gct) {
+				this._dataStart += 4;
+				this._dataEnd -= 4;
 			}
 		}
 
@@ -67,17 +68,15 @@ namespace ClassicMapLib {
 		public unsafe override string ToString() {
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine(Name);
-
-			if (!IsGCT) {
-				ushort* ptr = _dataStart;
-				int i = 0;
-				while (ptr < _dataEnd) {
-					sb.Append((*ptr).ToHexString());
-					if (i % 4 == 1) sb.Append(' ');
-					if (i % 4 == 3) sb.Append(Environment.NewLine);
-					ptr++;
-					i++;
-				}
+			
+			ushort* ptr = _dataStart;
+			int i = 0;
+			while (ptr < _dataEnd) {
+				sb.Append((*ptr).ToHexString());
+				if (i % 4 == 1) sb.Append(' ');
+				if (i % 4 == 3) sb.Append(Environment.NewLine);
+				ptr++;
+				i++;
 			}
 
 			return sb.ToString().Trim();
@@ -88,7 +87,7 @@ namespace ClassicMapLib {
 
 		protected virtual void Dispose(bool disposing) {
 			if (!disposedValue) {
-				Marshal.FreeHGlobal((IntPtr)_dataStart);
+				Marshal.FreeHGlobal(_allocatedMemory);
 				disposedValue = true;
 			}
 		}
