@@ -11,6 +11,16 @@ namespace ClassicMapLib {
 		private ushort* _dataStart;
 		private ushort* _dataEnd;
 
+		public unsafe bool IsGCT {
+			get {
+				return _dataEnd - _dataStart >= 8
+					&& _dataStart[0] == 0x00d0
+					&& _dataStart[1] == 0xc0de
+					&& _dataStart[2] == 0x00d0
+					&& _dataStart[3] == 0xc0de;
+			}
+		}
+
 		public ButtonMappingCode(string name, string data) : this(name, StringToBytes.ParseHexString(data).ToArray()) { }
 
 		public ButtonMappingCode(string name, byte[] data) {
@@ -45,16 +55,20 @@ namespace ClassicMapLib {
 			return list;
 		}
 
+		public unsafe byte[] GetData() {
+			byte[] data = new byte[(_dataEnd - _dataStart) * sizeof(ushort)];
+			for (int i = 0; i < data.Length; i += 2) {
+				data[i] = (byte)(_dataStart[i / 2] >> 8);
+				data[i + 1] = (byte)(_dataStart[i / 2]);
+			}
+			return data;
+		}
+
 		public unsafe override string ToString() {
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine(Name);
 
-			bool gct = _dataStart[0] == 0x00d0
-				&& _dataStart[1] == 0xc0de
-				&& _dataStart[2] == 0x00d0
-				&& _dataStart[3] == 0xc0de;
-
-			if (!gct) {
+			if (!IsGCT) {
 				ushort* ptr = _dataStart;
 				int i = 0;
 				while (ptr < _dataEnd) {
