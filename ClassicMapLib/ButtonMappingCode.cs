@@ -49,14 +49,21 @@ namespace ClassicMapLib {
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine(Name);
 
-			ushort* ptr = _dataStart;
-			int i = 0;
-			while (ptr < _dataEnd) {
-				sb.Append((*ptr).ToHexString());
-				if (i % 4 == 1) sb.Append(' ');
-				if (i % 4 == 3) sb.Append(Environment.NewLine);
-				ptr++;
-				i++;
+			bool gct = _dataStart[0] == 0x00d0
+				&& _dataStart[1] == 0xc0de
+				&& _dataStart[2] == 0x00d0
+				&& _dataStart[3] == 0xc0de;
+
+			if (!gct) {
+				ushort* ptr = _dataStart;
+				int i = 0;
+				while (ptr < _dataEnd) {
+					sb.Append((*ptr).ToHexString());
+					if (i % 4 == 1) sb.Append(' ');
+					if (i % 4 == 3) sb.Append(Environment.NewLine);
+					ptr++;
+					i++;
+				}
 			}
 
 			return sb.ToString().Trim();

@@ -49,10 +49,11 @@ Partial Class MappingControl
         '
         'Label2
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.Location = New System.Drawing.Point(151, -1)
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label2.AutoEllipsis = True
+        Me.Label2.Location = New System.Drawing.Point(151, 3)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(100, 21)
+        Me.Label2.Size = New System.Drawing.Size(121, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -64,7 +65,7 @@ Partial Class MappingControl
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ClassicControllerDropDownList)
         Me.Name = "MappingControl"
-        Me.Size = New System.Drawing.Size(251, 21)
+        Me.Size = New System.Drawing.Size(272, 21)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

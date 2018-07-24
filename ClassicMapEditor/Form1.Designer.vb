@@ -31,11 +31,11 @@ Partial Class Form1
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.MappingControl1 = New ClassicMapEditor.MappingControl()
-        Me.WiiRemoteMappingControl1 = New ClassicMapEditor.WiiRemoteMappingControl()
-        Me.WiiRemoteMappingControl2 = New ClassicMapEditor.WiiRemoteMappingControl()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,24 +58,24 @@ Partial Class Form1
         'ImportToolStripMenuItem
         '
         Me.ImportToolStripMenuItem.Name = "ImportToolStripMenuItem"
-        Me.ImportToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
+        Me.ImportToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ImportToolStripMenuItem.Text = "&Import..."
         '
         'ExportToolStripMenuItem
         '
         Me.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem"
-        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
+        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExportToolStripMenuItem.Text = "&Export..."
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(116, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(119, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'HelpToolStripMenuItem
@@ -101,34 +101,6 @@ Partial Class Form1
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.TextBox1.Size = New System.Drawing.Size(175, 337)
         Me.TextBox1.TabIndex = 1
-        Me.TextBox1.Text = "Test" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "00000000 AAAAAAAA" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "EEEEEEEE 88888888"
-        '
-        'MappingControl1
-        '
-        Me.MappingControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MappingControl1.Location = New System.Drawing.Point(12, 49)
-        Me.MappingControl1.Name = "MappingControl1"
-        Me.MappingControl1.Size = New System.Drawing.Size(291, 21)
-        Me.MappingControl1.TabIndex = 2
-        '
-        'WiiRemoteMappingControl1
-        '
-        Me.WiiRemoteMappingControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.WiiRemoteMappingControl1.Location = New System.Drawing.Point(12, 76)
-        Me.WiiRemoteMappingControl1.Name = "WiiRemoteMappingControl1"
-        Me.WiiRemoteMappingControl1.Size = New System.Drawing.Size(291, 21)
-        Me.WiiRemoteMappingControl1.TabIndex = 3
-        '
-        'WiiRemoteMappingControl2
-        '
-        Me.WiiRemoteMappingControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.WiiRemoteMappingControl2.Location = New System.Drawing.Point(12, 103)
-        Me.WiiRemoteMappingControl2.Name = "WiiRemoteMappingControl2"
-        Me.WiiRemoteMappingControl2.Size = New System.Drawing.Size(291, 21)
-        Me.WiiRemoteMappingControl2.TabIndex = 4
         '
         'Label1
         '
@@ -148,18 +120,36 @@ Partial Class Form1
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Wii Remote"
         '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanel1.AutoScroll = True
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 46)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(303, 315)
+        Me.FlowLayoutPanel1.TabIndex = 7
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        Me.OpenFileDialog1.Filter = "GCT files|*.gct|All files|*.*"
+        '
+        'SaveFileDialog1
+        '
+        Me.SaveFileDialog1.Filter = "GCT files|*.gct|All files|*.*"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(484, 361)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.WiiRemoteMappingControl2)
-        Me.Controls.Add(Me.WiiRemoteMappingControl1)
-        Me.Controls.Add(Me.MappingControl1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
         Me.Text = "Classic Controller Code Button Mapping Editor"
@@ -179,9 +169,9 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MappingControl1 As MappingControl
-    Friend WithEvents WiiRemoteMappingControl1 As WiiRemoteMappingControl
-    Friend WithEvents WiiRemoteMappingControl2 As WiiRemoteMappingControl
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class
