@@ -46,7 +46,7 @@ Public Class Form1
         End If
 
         If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-            Dim data = _code.GetData()
+            Dim data = _code.ExportToGCT()
             File.WriteAllBytes(SaveFileDialog1.FileName, data)
         End If
     End Sub

@@ -56,12 +56,28 @@ namespace ClassicMapLib {
 			return list;
 		}
 
-		public unsafe byte[] GetData() {
-			byte[] data = new byte[(_dataEnd - _dataStart) * sizeof(ushort)];
-			for (int i = 0; i < data.Length; i += 2) {
-				data[i] = (byte)(_dataStart[i / 2] >> 8);
-				data[i + 1] = (byte)(_dataStart[i / 2]);
+		public unsafe byte[] ExportToGCT() {
+			byte[] data = new byte[(_dataEnd - _dataStart) * sizeof(ushort) + 16];
+			data[0] = 0x00;
+			data[1] = 0xd0;
+			data[2] = 0xc0;
+			data[3] = 0xde;
+			data[4] = 0x00;
+			data[5] = 0xd0;
+			data[6] = 0xc0;
+			data[7] = 0xde;
+			for (int i = 0; i < data.Length - 16; i += 2) {
+				data[8 + i] = (byte)(_dataStart[i / 2] >> 8);
+				data[8 + i + 1] = (byte)(_dataStart[i / 2]);
 			}
+			data[data.Length - 8] = 0xf0;
+			data[data.Length - 7] = 0x00;
+			data[data.Length - 6] = 0x00;
+			data[data.Length - 5] = 0x00;
+			data[data.Length - 4] = 0x00;
+			data[data.Length - 3] = 0x00;
+			data[data.Length - 2] = 0x00;
+			data[data.Length - 1] = 0x00;
 			return data;
 		}
 
