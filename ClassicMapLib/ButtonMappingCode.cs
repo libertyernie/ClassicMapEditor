@@ -12,6 +12,8 @@ namespace ClassicMapLib {
 		private ushort* _dataStart;
 		private ushort* _dataEnd;
 
+		public unsafe long LengthInBytes => (byte*)_dataEnd - (byte*)_dataStart;
+
 		public ButtonMappingCode(string name, string data) : this(name, StringToBytes.ParseHexString(data).ToArray()) { }
 
 		public ButtonMappingCode(string name, byte[] data) {
@@ -21,18 +23,27 @@ namespace ClassicMapLib {
 			this._dataStart = (ushort*)_allocatedMemory;
 			this._dataEnd = (ushort*)(_allocatedMemory + data.Length);
 
-			for (int i = 0; i < data.Length; i += 2) {
+			for (int i = 0; i + 1 < data.Length; i += 2) {
 				this._dataStart[i / 2] = (ushort)(data[i] << 8 | data[i + 1]);
 			}
 
-			bool gct = _dataEnd - _dataStart >= 16
+			bool gct = LengthInBytes >= 16
 				&& _dataStart[0] == 0x00d0
 				&& _dataStart[1] == 0xc0de
 				&& _dataStart[2] == 0x00d0
 				&& _dataStart[3] == 0xc0de;
 			if (gct) {
 				this._dataStart += 4;
-				this._dataEnd -= 4;
+				for (ushort* ptr = _dataStart; ptr + 3 < _dataEnd; ptr++) {
+					bool end = ptr[0] == 0xf000
+						&& ptr[1] == 0x0000
+						&& ptr[2] == 0x0000
+						&& ptr[3] == 0x0000;
+					if (end) {
+						this._dataEnd = ptr;
+						break;
+					}
+				}
 			}
 		}
 
@@ -57,7 +68,7 @@ namespace ClassicMapLib {
 		}
 
 		public unsafe byte[] ExportToGCT() {
-			byte[] data = new byte[(_dataEnd - _dataStart) * sizeof(ushort) + 16];
+			byte[] data = new byte[LengthInBytes + 16];
 			data[0] = 0x00;
 			data[1] = 0xd0;
 			data[2] = 0xc0;
@@ -66,7 +77,7 @@ namespace ClassicMapLib {
 			data[5] = 0xd0;
 			data[6] = 0xc0;
 			data[7] = 0xde;
-			for (int i = 0; i < data.Length - 16; i += 2) {
+			for (int i = 0; i < LengthInBytes; i += 2) {
 				data[8 + i] = (byte)(_dataStart[i / 2] >> 8);
 				data[8 + i + 1] = (byte)(_dataStart[i / 2]);
 			}
