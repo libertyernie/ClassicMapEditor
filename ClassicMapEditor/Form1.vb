@@ -30,7 +30,13 @@ Public Class Form1
     End Sub
 
     Private Sub UpdateTextBox()
-        TextBox1.Text = _code.ToString
+        If _code.LengthInBytes > 1024 * 1024 Then
+            TextBox1.Enabled = False
+            TextBox1.Text = ""
+        Else
+            TextBox1.Enabled = True
+            TextBox1.Text = _code.ToString
+        End If
     End Sub
 
     Private Sub ImportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportToolStripMenuItem.Click
@@ -70,6 +76,10 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
     Private GCTLine As New Regex("^[0-9A-Fa-f]{8} [0-9A-Fa-f]{8}$")
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        If Not TextBox1.Enabled Then
+            Return
+        End If
+
         If _code Is Nothing OrElse _code.ToString <> TextBox1.Text Then
             Dim lines = TextBox1.Text.TrimEnd.Split(New String() {vbCrLf}, StringSplitOptions.None)
 

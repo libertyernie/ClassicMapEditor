@@ -8,9 +8,9 @@ namespace ClassicMapLib {
 	public unsafe class ButtonMappingCode : IDisposable {
 		public readonly string Name;
 
-		private IntPtr _allocatedMemory;
-		private ushort* _dataStart;
-		private ushort* _dataEnd;
+		private readonly IntPtr _allocatedMemory;
+		private readonly ushort* _dataStart;
+		private readonly ushort* _dataEnd;
 
 		public unsafe long LengthInBytes => (byte*)_dataEnd - (byte*)_dataStart;
 
